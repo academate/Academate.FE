@@ -1,1 +1,120 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import './stylehelpers';
+
+$sitebackground: #F4F4F4;
+
+.sitegradient {
+    background-image: linear-gradient(0deg, #fdfbfb 0%, #ebedee 100%);
+    background-repeat: no-repeat;
+} 
+
+$disabled: #3D94F6;
+$cancel: rgb(208, 57, 30);
+$primary: #3D94F6;
+$primary-dark: #3887E0;
+$primary-light: #71b0f8;
+$warn: #F74D47;
+$warn-dark: #F75D57;
+$warn-light: #F98984;
+
+html, body { 
+    height: 100%;    
+}
+
+body { 
+    @extend .sitegradient;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 100;
+    margin: 0px;
+}
+
+.section-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 100;
+    font-size: 24px;
+}
+
+.active-menu-item {
+    border-left: 5px turquoise solid;
+  }
+
+.application {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content {
+    width: 70vw;
+}
+
+.tile-button {
+    margin: 4px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    color: #FFFFFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: 100;
+    padding: 5px 7px 5px 7px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .tile-button:disabled {
+      background: $disabled !important;
+      cursor: not-allowed;
+  }
+
+  .primary {
+    background: $primary;
+
+    box-shadow: 0px 0px 2px 0px $primary !important;
+    -webkit-box-shadow: 0px 0px 2px 0px $primary !important;
+    -moz-box-shadow: 0px 0px 2px 0px $primary !important;
+    border: solid $primary-dark 1px;
+  }
+  
+  .primary:hover {
+    background: $primary-dark;
+    background-image: -webkit-linear-gradient(bottom, $primary, $primary-light);
+    background-image: -moz-linear-gradient(bottom, $primary, $primary-light);
+    background-image: -ms-linear-gradient(bottom, $primary, $primary-light);
+    background-image: -o-linear-gradient(bottom, $primary, $primary-light);
+    background-image: linear-gradient(to top, $primary, $primary-light);
+    text-decoration: none;
+  }
+
+  .extended {
+      padding-left: 25px;
+      padding-right: 25px;
+  }
+
+  .warn {
+    background: $warn;
+
+    box-shadow: 0px 0px 2px 0px $warn !important;
+    -webkit-box-shadow: 0px 0px 2px 0px $warn !important;
+    -moz-box-shadow: 0px 0px 2px 0px $warn !important;
+    border: solid $warn-dark 1px;
+  }
+
+  .warn:hover {
+    background: $warn-light;
+    background-image: -webkit-linear-gradient(bottom, $warn, $warn-light);
+    background-image: -moz-linear-gradient(bottom, $warn, $warn-light);
+    background-image: -ms-linear-gradient(bottom, $warn, $warn-light);
+    background-image: -o-linear-gradient(bottom, $warn, $warn-light);
+    background-image: linear-gradient(to top, $warn, $warn-light);
+    text-decoration: none;
+  }
+
+  @media only screen and (max-width : 1024px) {
+      .laptopOnly {
+          display: none;
+      }
+      
+  }

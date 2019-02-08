@@ -1,0 +1,58 @@
+<div class='wrapper'>
+  <div class='flex-layout flex-layout-vertical flex-layout-center mat-elevation-z8 p-32 login-form sitegradient'>
+  
+    <!-- Login form title -->
+    <div class='p-10 login-form-title'>
+      <span>
+        Login
+      </span>
+    </div>
+  
+    <!-- login form -->
+    <div class=''>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+  
+          <div class="form-group flex-layout flex-layout-center">
+            <div class='flex-item-auto p-r-10'>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" height="32" width="32">
+                <path d="M48.014 42.89l-9.553-4.776A2.63 2.63 0 0 1 37 35.748v-3.38l.72-.95c1.24-1.75 2.232-3.698 2.954-5.8C42.084 24.97 43 23.575 43 22v-4c0-.963-.36-1.896-1-2.625v-5.32c.056-.55.276-3.824-2.092-6.525C37.854 1.188 34.52 0 30 0s-7.854 1.188-9.908 3.53c-2.368 2.7-2.148 5.976-2.092 6.526v5.32c-.64.73-1 1.662-1 2.625v4c0 1.217.553 2.352 1.497 3.11.916 3.627 2.833 6.36 3.503 7.237v3.31c0 .968-.528 1.856-1.377 2.32l-8.92 4.866A9.02 9.02 0 0 0 7 50.762V54c0 4.746 15.045 6 23 6s23-1.254 23-6v-3.043a8.97 8.97 0 0 0-4.986-8.068zM51 54c0 1.357-7.412 4-21 4S9 55.357 9 54v-3.238c0-2.57 1.402-4.934 3.66-6.164l8.92-4.866c1.493-.815 2.42-2.378 2.42-4.077v-4.02l-.233-.278c-.024-.03-2.475-2.994-3.4-7.065l-.09-.396-.34-.22c-.58-.374-.925-1-.925-1.677v-4c0-.56.238-1.084.67-1.475l.33-.297V10l-.01-.13c-.003-.027-.343-2.8 1.605-5.02C23.253 2.958 26.08 2 30 2c3.905 0 6.727.95 8.386 2.828 1.947 2.2 1.625 5.017 1.623 5.04l-.01 6.36.33.298A1.97 1.97 0 0 1 41 18v4c0 .873-.572 1.637-1.422 1.9l-.498.153-.16.495c-.67 2.08-1.622 4.003-2.834 5.713-.297.42-.586.794-.837 1.08l-.25.284v4.125c0 1.77.983 3.36 2.566 4.153l9.553 4.776A6.98 6.98 0 0 1 51 50.957V54z" /></svg>
+            </div>
+            <mat-form-field class="flex-item-auto">
+              <input formControlName="username" matInput placeholder="Username" [ngClass]="{ 'is-invalid': submitted && formControls.username.errors }">
+              <div *ngIf="submitted && formControls.username.errors" class="invalid-feedback">
+                <div *ngIf="formControls.username.errors.required">Username is required</div>
+              </div>
+            </mat-form-field>
+          </div>
+  
+        </div>
+  
+        <div class="form-group flex-layout flex-layout-center">
+          <div class='flex-item-auto p-r-10'>
+            <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="-66 0 512 512" width="32">
+              <path d="M340 197.008V150C340 67.3 272.7 0 190 0S40 67.3 40 150v47.008C17.203 201.652 0 221.855 0 246v56.77a10 10 0 1 0 20 0V246c0-16.543 13.457-30 30-30h280c16.543 0 30 13.457 30 30v216c0 13.035-8.36 24.152-20 28.28V430a10 10 0 1 0-20 0v62H50c-16.543 0-30-13.457-30-30v-79a10 10 0 1 0-20 0v79c0 27.57 22.43 50 50 50h280c27.57 0 50-22.43 50-50V246c0-24.145-17.203-44.348-40-48.992zM114 196v-46c0-41.906 34.094-76 76-76s76 34.094 76 76v46zm172 0v-46c0-52.934-43.066-96-96-96s-96 43.066-96 96v46H60v-46c0-71.684 58.316-130 130-130s130 58.316 130 130v46zM10 352.488a10.06 10.06 0 0 0 7.07-2.93 10.08 10.08 0 0 0 2.93-7.07c0-2.633-1.07-5.2-2.93-7.066a10.07 10.07 0 0 0-7.07-2.934 10.07 10.07 0 0 0-7.07 2.934A10.06 10.06 0 0 0 0 342.488a10.08 10.08 0 0 0 2.93 7.07c1.86 1.86 4.44 2.93 7.07 2.93zM190 458c16.543 0 30-13.457 30-30v-53.102c15.023-9.945 24.13-26.664 24.13-44.984 0-29.773-24.227-54-54-54s-54 24.227-54 54c0 18.188 9.004 34.844 23.87 44.813V428c0 16.543 13.457 30 30 30zm-33.87-128.086c0-18.75 15.25-34 34-34s34 15.25 34 34c0 12.875-7.148 24.496-18.652 30.336-3.36 1.703-5.477 5.148-5.477 8.918V428a10.01 10.01 0 0 1-10 10 10.01 10.01 0 0 1-10-10v-58.965c0-3.742-2.1-7.172-5.418-8.887-11.383-5.867-18.453-17.453-18.453-30.234zM330 399a10.06 10.06 0 0 0 10-10 10.06 10.06 0 0 0-10-10 10.08 10.08 0 0 0-10 10 10.08 10.08 0 0 0 10 10zm0 0" /></svg>
+          </div>
+          <mat-form-field class='flex-item-auto'>
+            <input formControlName="password" type='password' matInput placeholder="password" [ngClass]="{ 'is-invalid': submitted && formControls.password.errors }">
+            <div *ngIf="submitted && formControls.password.errors" class="invalid-feedback">
+              <div *ngIf="formControls.password.errors.required">password is required</div>
+            </div>
+          </mat-form-field>
+  
+        </div>
+  
+        <div class="form-group flex-layout flex-layout-center" style='padding-top: 30px'>
+  
+          <button [disabled]="loading" class="p-r-10 p-l-10 tile-button primary login-form-button">Login</button>
+          <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+  
+        </div>
+  
+      </form>
+    </div>
+  
+    <div *ngIf="error" class="alert alert-danger m-t-5">{{error}}</div>
+  
+  </div>
+</div>

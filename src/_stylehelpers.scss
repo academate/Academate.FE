@@ -1,0 +1,74 @@
+/*******************************
+            Flex Layout
+*******************************/
+.flex-layout{
+    display: flex !important;
+  }
+  .flex-layout-inline {
+      display: inline-flex !important;
+  }
+  .flex-layout-vertical {
+      flex-direction: column !important;
+  }
+  .flex-layout-wrap {
+      flex-wrap: wrap !important;
+  }
+  .flex-item-auto {
+      flex: 1 1 0 !important;
+  }
+  .flex-item-no-shrink {
+      flex-shrink: 0 !important;
+  }
+  .flex-layout-no-wrap {
+      flex-wrap: nowrap !important;
+  }
+  
+  /* alignment in cross axis */
+  .flex-layout-center {
+      align-items: center !important;
+  }
+  .flex-layout-end {
+      align-items: flex-end !important;
+  }
+  .flex-layout-justified {
+      justify-content: space-between !important;
+  }
+  .flex-layout-right {
+      justify-content: flex-end !important;
+  }
+  
+  /* self alignment */
+  .flex-self-start {
+      align-self: flex-start !important;
+  }
+  .flex-self-center {
+      align-self: center !important;
+  }
+  .flex-self-end {
+      align-self: flex-end !important;
+  }
+  .flex-self-stretch {
+      align-self: stretch !important;
+  }
+
+  
+$spaceamounts: (0, 3, 5, 8, 10, 12, 14, 20, 24, 32, 38, 50);
+$sides: (top, bottom, left, right);
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+    .p-#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+  .m-#{$space} {
+    margin: #{$space}px !important;
+  }
+  .p-#{$space} {
+    padding: #{$space}px !important;
+  }
+}
+
