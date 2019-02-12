@@ -10,7 +10,7 @@ import { Consts } from '../consts';
 })
 export class AuthService {
 
-  private tokenServiceAddress = 'http://localhost:52579/users/authenticate';
+  private tokenServiceAddress = 'http://localhost:60419/users/authenticate';
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
