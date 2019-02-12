@@ -1,0 +1,9 @@
+<p>
+  academy-calendar-home works!
+</p>
+
+<div *ngIf='studentExams' class='flex-layout'>
+  <div class='caldendar'>
+    <app-exam-calendar [examsData]='studentExams'></app-exam-calendar>
+  </div>
+</div>

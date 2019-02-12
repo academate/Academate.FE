@@ -15,6 +15,7 @@ import { LoaderInterceptorService } from './shared/interceptors/loader-intercept
 import { SharedModule } from './shared/shared.module';
 import { SpaModule } from './spa/spa.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AcademyCalendarModule } from './academy-calendar/academy-calendar.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
 
     SpaModule,
-    SharedModule
+    SharedModule,
+    AcademyCalendarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

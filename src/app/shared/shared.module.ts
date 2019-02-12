@@ -4,11 +4,13 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule, MatInputModule } from '@angular/material';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    LoaderComponent
+    LoaderComponent,
+    CalendarComponent
   ],
   imports: [
     CommonModule,
