@@ -347,4 +347,14 @@ $color-java: #1BBAE1; // blue text
     .main-cards {
       column-count: 2;
     }
+
+    .date {
+      margin: 32px;
+    }
   }
+
+.date {
+  font-weight: normal;
+  margin: 6px;
+  font-size: 16px;
+}
