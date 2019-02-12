@@ -19,7 +19,13 @@ const exams: CalendarEvent[] = [
         text: 'Algorithems Exam',
         startDate: new Date(2019, 1, 25, 9, 30),
         endDate: new Date(2019, 1, 25, 11, 30)
+    }, {
+        text: 'English Exam',
+        startDate: new Date(2019, 1, 26, 9, 30),
+        endDate: new Date(2019, 1, 26, 11, 30),
+        description: 'Some desc goes here'
     }
+
 ];
 
 

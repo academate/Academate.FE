@@ -1,3 +1,25 @@
+@mixin profile-avatar {
+  background-image: url("https://media.licdn.com/dms/image/C4D03AQFygpuEkZJAow/profile-displayphoto-shrink_200_200/0?e=1555545600&v=beta&t=K4qLy68lp1sG50PmZ2uMciXwk9M9nnMju3-OJJcEqJo");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  // border: 2px solid rgba(255, 255, 255, .2);
+}
+
+@mixin box-shadow {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+$height-header: 50px;
+$height-footer: 50px;
+$width-sidenav: 120px;
+$color-transparent: rgba(255, 255, 255, .5);
+$color-white: #FFF; // card bg
+$color-catskill-white: #F9FAFC; // top nav bg
+$color-mischka: #DADAE3; // light gray for menu icon
+$color-abbey: #777; // gray text
+$color-java: #1BBAE1; // blue text
+
 .main {
     padding: 20px;
     overflow-y: auto;
@@ -18,31 +40,205 @@
   /* Give every child element its grid name */
   .header {
     grid-area: header;
-  
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    padding: 0 16px;
-    background-color: #fdfdfd;
-  }
+    justify-content: space-between;
+    background-color: $color-catskill-white;
   
+    &__menu {
+      position: fixed; // Needs to stay visible for all mobile scrolling
+      padding: 13px;
+      left: 12px;
+      background-color: $color-mischka;
+      border-radius: 50%;
+      z-index: 1;
+  
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  
+    &__search {
+      margin-left: 55px;
+      font-size: 20px;
+      color: $color-abbey;
+    }
+  
+    &__input {
+      border: none;
+      background: transparent;
+      padding: 12px;
+      font-size: 20px;
+      color: $color-abbey;
+  
+      &:focus {
+        outline: none;
+        border: none;
+      }
+    }
+  
+    &__avatar {
+      @include profile-avatar;
+      position: relative;
+      margin: 0 26px;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+  
+      &:after {
+        position: absolute;
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: none;
+        border-left: 2px solid $color-abbey;
+        border-bottom: 2px solid $color-abbey;
+        transform: rotate(-45deg) translateY(-50%);
+        top: 50%;
+        right: -18px;
+      }
+    }
+  }
+  // .header {
+  //   grid-area: header;
+  
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: flex-end;
+  //   padding: 0 16px;
+  //   background-color: #fdfdfd;
+  // }
+  
+  // .sidenav {
+  //   grid-area: sidenav;
+  //   display: flex;
+  //   flex-direction: column;
+  //   height: 100%;
+  //   width: 120px;
+  //   position: fixed;
+  //   overflow-y: auto;
+  //   // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  //   box-shadow: 0 2px 4px 0 rgba(0,0,0,.16), 0 0 20px 0px rgba(0,0,0,.5);
+  //   z-index: 2; /* Needs to sit above the hamburger menu icon */
+  //   // background: #fdfdfd;;
+  //   // background: linear-gradient(180deg,#40e0d0, #1874cd);
+  //   background: linear-gradient(180deg,#4286f4,#373B44);
+  //   transform: translateX(-245px);
+  //   transition: all .6s ease-in-out;
+
+  //   &__brand {
+  //     position: relative;
+  //     display: flex;
+  //     align-items: center;
+  //     padding: 0 16px;
+  //     height: $height-header;
+  //     background-color: rgba(0, 0, 0, .15);
+  
+  //     &-icon {
+  //       margin-top: 2px;
+  //       font-size: 14px;
+  //       color: $color-transparent;
+  //     }
+  
+  //     &-close {
+  //       position: absolute;
+  //       right: 8px;
+  //       top: 8px;
+  //       visibility: visible;
+  //       color: $color-transparent;
+  //       cursor: pointer;
+  //     }
+  // }
+
   .sidenav {
+    position: fixed; // Access sidenav at any scroll position; relatively positioned on medium + screens
     grid-area: sidenav;
-    display: flex;
-    flex-direction: column;
     height: 100%;
-    width: 120px;
-    position: fixed;
     overflow-y: auto;
-    // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.16), 0 0 20px 0px rgba(0,0,0,.5);
-    z-index: 2; /* Needs to sit above the hamburger menu icon */
-    // background: #fdfdfd;;
-    // background: linear-gradient(180deg,#40e0d0, #1874cd);
     background: linear-gradient(180deg,#4286f4,#373B44);
+    color: $color-white;
+    width: $width-sidenav; // Will match grid area on medium + screens
     transform: translateX(-245px);
     transition: all .6s ease-in-out;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    z-index: 2; // Needs to sit above the hamburger menu icon
+  
+    &__brand {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: $height-header;
+      background-color: rgba(0, 0, 0, .15);
+  
+      &-icon {
+        margin-top: 2px;
+        font-size: 14px;
+        color: $color-transparent;
+      }
+  
+      &-close {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        visibility: visible;
+        color: $color-transparent;
+        cursor: pointer;
+      }
+  
+      &-link {
+        font-size: 18px;
+        font-weight: bold;
+        color: $color-white;
+        margin: auto;
+        text-decoration: none;
+      }
+    }
+  
+    &__profile {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      min-height: 90px;
+      background-color: rgba(255, 255, 255, .1);
+  
+      &-avatar {
+        @include profile-avatar;
+        height: 64px;
+        width: 64px;
+        margin: 0 15px;
+      }
+  
+      &-title {
+        padding: 12px;
+        font-size: 17px;
+        letter-spacing: 1px;
+      }
+    }
+  
+    &__arrow {
+      position: absolute;
+      content: "";
+      width: 6px;
+      height: 6px;
+      top: 50%;
+      right: 20px;
+      border-left: 2px solid rgba(255,255,255,.5);
+      border-bottom: 2px solid rgba(255,255,255,.5);
+      transform: translateY(-50%) rotate(225deg);
+    }
+  
+    &__sublist {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 0 0;
+    }
+  
+    &--active {
+      transform: translateX(0);
+    }
   }
+  
   
   /* The active class is toggled on hamburger and close icon clicks */
   .sidenav.active {
