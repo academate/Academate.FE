@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class ConfigurationService {
 
   private readonly serviceAddress = 'dummy';
-  
+
   constructor(private http: HttpClient) { }
 
   // Basic implementation to get all configurations from server - returns as string (json)

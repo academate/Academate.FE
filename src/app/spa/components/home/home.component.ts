@@ -12,9 +12,14 @@ export class HomeComponent implements OnInit {
 
   showMenu: boolean;
   currentDate: string;
+  dataSource: any;
+  pmenu: any[];
+  showFirstSubmenuModes: any;
 
   constructor(private authService: AuthService,
-              private router: Router) { }
+    private router: Router) {
+
+  }
 
   ngOnInit() {
     this.currentDate = formatDate(new Date(), 'EEEE, d MMM, y', 'en');

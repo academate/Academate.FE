@@ -171,6 +171,11 @@ $color-java: #1BBAE1; // blue text
       height: $height-header;
       background-color: rgba(0, 0, 0, .15);
   
+      &__closemenu {
+        display: flex;
+        padding: 0px 12px;
+      }
+
       &-icon {
         margin-top: 2px;
         font-size: 14px;
@@ -193,6 +198,14 @@ $color-java: #1BBAE1; // blue text
         margin: auto;
         text-decoration: none;
       }
+    }
+
+    &__logo {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      min-height: 90px;
+      background-color: rgba(255, 255, 255, .1);
     }
   
     &__profile {
@@ -249,18 +262,19 @@ $color-java: #1BBAE1; // blue text
   .sidenav__close-icon {
     position: absolute;
     visibility: visible;
-    top: 8px;
+    top: 12px;
     right: 12px;
     cursor: pointer;
     font-size: 20px;
     color: #ddd;
+    z-index: 9;
   }
   
   
   
   .sidenav__list {
     padding: 0;
-    margin-top: 85px;
+    margin-top: 40px;
     list-style-type: none;
   }
   
@@ -337,6 +351,10 @@ $color-java: #1BBAE1; // blue text
       }
     
       .sidenav__close-icon {
+        visibility: hidden;
+      }
+
+      .sidenav__brand__closemenu {
         visibility: hidden;
       }
     }

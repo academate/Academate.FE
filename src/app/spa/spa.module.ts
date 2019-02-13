@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatMenu, MatMenuModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../shared/interceptors/token-interceptor.service';
@@ -15,7 +15,8 @@ import { LoaderInterceptorService } from '../shared/interceptors/loader-intercep
     CommonModule,
     RouterModule,
 
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   exports: [
     HomeComponent
