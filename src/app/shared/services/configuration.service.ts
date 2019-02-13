@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class ConfigurationService {
 
   private readonly serviceAddress = 'dummy';
-
+  
   constructor(private http: HttpClient) { }
 
   // Basic implementation to get all configurations from server - returns as string (json)
@@ -19,4 +19,9 @@ export class ConfigurationService {
 
     return of('');
   }
+
+  getServerAddress(): Observable<string> {
+    return of('https://academatebe.azurewebsites.net');
+  }
+
 }

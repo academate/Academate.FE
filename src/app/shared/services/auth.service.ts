@@ -1,24 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { User, LoginCredentials } from '../models/user.model';
 import { Consts } from '../consts';
+import { ConfigurationService } from './configuration.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private tokenServiceAddress = 'http://localhost:60419/users/authenticate';
+  private serverAddress = '';
+  private tokenServiceAddress = '/users/authenticate';
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  constructor(private http: HttpClient) {
+  constructor(private configService: ConfigurationService, private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(
-      JSON.parse(localStorage.getItem (Consts.ConfigurationKeys.CurrentUser)));
+      JSON.parse(localStorage.getItem(Consts.ConfigurationKeys.CurrentUser)));
     this.currentUser = this.currentUserSubject.asObservable();
+    configService.getServerAddress()
+      .pipe(
+        catchError(err => {
+          console.log('Cound not get base server address', err);
+          return throwError(err);
+        })
+      )
+      .subscribe(address => this.serverAddress = address);
   }
 
   public get currentUserValue(): User {
@@ -38,7 +48,8 @@ export class AuthService {
       password: pass
     };
 
-    return this.http.post<User>(this.tokenServiceAddress, JSON.stringify(loginCredentialsRequestBody), httpOptions)
+    // tslint:disable-next-line:max-line-length
+    return this.http.post<User>(`${this.serverAddress}/${this.tokenServiceAddress}`, JSON.stringify(loginCredentialsRequestBody), httpOptions)
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user && user.token) {
