@@ -10,7 +10,7 @@ const routes: Routes = [
     path: 'spa',
     component: HomeComponent,
     children: [
-      { path: 'acalendar', component: AcademyCalendarHomeComponent , outlet: 'maincontent' , canActivate: [AuthGuardService]}
+      { path: 'acalendar', component: AcademyCalendarHomeComponent , outlet: 'mc' , canActivate: [AuthGuardService]}
     ]
   },
   {

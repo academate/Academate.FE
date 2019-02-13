@@ -52,7 +52,10 @@ export class LoginComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                  this.router.navigateByUrl('/spa');
+                  this.router.navigateByUrl('/spa').then(
+                      () => this.router.navigateByUrl('/spa/(mc:acalendar)'),
+                      (err) => console.error(`Cannot navigate to home page ${JSON.stringify(err)}`)
+                  );
               },
               error => {
                   this.error = error;
