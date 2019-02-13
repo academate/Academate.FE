@@ -57,6 +57,17 @@ $color-java: #1BBAE1; // blue text
         cursor: pointer;
       }
     }
+
+    &__menuActions {
+      display: flex;
+      flex-direction: row;  
+      align-items: center;
+    }
+
+    &__profileMenu {
+      margin-top: 5px;
+      cursor: pointer;
+    }
   
     &__search {
       margin-left: 55px;
@@ -357,7 +368,18 @@ $color-java: #1BBAE1; // blue text
       .sidenav__brand__closemenu {
         visibility: hidden;
       }
+
+      .date {
+        margin-left: -36px !important;
+      }
     }
+
+    
+.date {
+  font-weight: normal;
+  margin: 6px;
+  font-size: 16px;
+}
   
   /* Medium screens breakpoint (1050px) */
   @media only screen and (min-width: 65.625em) {
@@ -365,14 +387,4 @@ $color-java: #1BBAE1; // blue text
     .main-cards {
       column-count: 2;
     }
-
-    .date {
-      margin: 32px;
-    }
   }
-
-.date {
-  font-weight: normal;
-  margin: 6px;
-  font-size: 16px;
-}

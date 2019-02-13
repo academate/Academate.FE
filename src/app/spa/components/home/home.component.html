@@ -3,15 +3,15 @@
 
 
   <header class="header">
-    <div class="" (click)='showMenu = true'>
+    <div class="header__menuActions" (click)='showMenu = true'>
       <img class='sidenav__brand__closemenu' src='../../../../assets/menu_b.svg' width='24'>
-    </div>
-    <div class="header__search">
       <span class='date'>{{ currentDate }}</span>
     </div>
-    <div >
-      <button class="header__avatar" style='background: transparent; border: none' mat-icon-button [matMenuTriggerFor]="menu">
-        
+    
+    <div class='header__profileMenu'>
+      <button style='background: transparent; border: none; cursor: pointer;' mat-icon-button [matMenuTriggerFor]="menu">
+        <!-- Show user profile or placeholder as menu icon -->
+        <img class='m-l-10' src='../../../../assets/user.svg' height='40px' class='user-account'>
       </button>
 
       <mat-menu #menu="matMenu">
@@ -31,7 +31,6 @@
       <img class='' src='../../../../assets/multiply_b.svg' width='24' (click)='showMenu = false'>
     </div>
     <div class="sidenav__brand">
-
     </div>
     <!-- <div class="sidenav__profile"> -->
     <!-- <div class="sidenav__profile-avatar"></div> -->
