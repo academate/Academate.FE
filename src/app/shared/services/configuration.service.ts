@@ -21,6 +21,7 @@ export class ConfigurationService {
   }
 
   getServerAddress(): Observable<string> {
+    // Azure app service URL : academatebe.azurewebsites.net/
     return of('https://academatebe.azurewebsites.net');
   }
 

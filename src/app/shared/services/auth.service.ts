@@ -12,7 +12,7 @@ import { ConfigurationService } from './configuration.service';
 export class AuthService {
 
   private serverAddress = '';
-  private tokenServiceAddress = '/users/authenticate';
+  private tokenServiceAddress = 'api/users/authenticate';
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
