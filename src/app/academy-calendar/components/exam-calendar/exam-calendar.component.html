@@ -1,3 +1,4 @@
-<dx-scheduler [dataSource]="examsData" [views]='["day", "week", "month","agenda"]' currentView="day" [currentDate]="currentDate"
-    [startDayHour]="8" [endDayHour]="20" [firstDayOfWeek]="0" [height]='600'>
+<dx-scheduler [dataSource]="examsData" [views]='["day", "week", "month","agenda"]' [editing]="editSettings"
+    currentView="day" [currentDate]="currentDate" [startDayHour]="8" [endDayHour]="20" [firstDayOfWeek]="0"
+    [height]='600'>
 </dx-scheduler>

@@ -11,6 +11,13 @@ export class ExamCalendarComponent implements OnInit {
   @Input() examsData: CalendarEvent[];
   currentDate: Date = new Date(2019, 1, 22);
 
+  editSettings: {
+    allowAdding: false;
+    allowDeleting: false;
+    allowDragging: false;
+    allowUpdating: false;
+  };
+
   constructor() {
   }
 
