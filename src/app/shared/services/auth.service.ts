@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { User, LoginCredentials } from '../models/user.model';
 import { Consts } from '../consts';
@@ -62,9 +62,15 @@ export class AuthService {
       }));
   }
 
-  logout() {
+  logout(): Observable<boolean> {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+
+    if (localStorage.getItem(Consts.ConfigurationKeys.CurrentUser) === '' ||
+      !localStorage.getItem(Consts.ConfigurationKeys.CurrentUser)) {
+      return of(true);
+    }
+    return of(false);
   }
 }

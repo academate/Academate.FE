@@ -25,8 +25,9 @@ export class HomeComponent implements OnInit {
     this.currentDate = formatDate(new Date(), 'EEEE, d MMM, y', 'en');
   }
 
-  handleMenuClick($event): void {
-    this.authService.logout();
-    this.router.navigateByUrl('/login');
+  logout(): void {
+    this.authService.logout().subscribe(
+      () => this.router.navigateByUrl('/login')
+    );
   }
 }
