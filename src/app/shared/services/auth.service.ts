@@ -21,7 +21,7 @@ export class AuthService {
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem(Consts.ConfigurationKeys.CurrentUser)));
     this.currentUser = this.currentUserSubject.asObservable();
-    configService.getServerAddress()
+    this.configService.getServerAddress()
       .pipe(
         catchError(err => {
           console.log('Cound not get base server address', err);
