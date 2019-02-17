@@ -29,7 +29,11 @@ export class AcademyCalendarHomeComponent implements OnInit {
   }
 
   refreshDataSource(): void {
+    this.refreshExams();
+    this.refreshLectures();
+  }
 
+  private refreshExams(): void {
     this.examsDataService.getExams().subscribe(ex => {
       this.exams = ex.map(exam => {
         const _startDate = new Date(exam['startDate']);
@@ -42,7 +46,8 @@ export class AcademyCalendarHomeComponent implements OnInit {
 
       this.calendarEvents.push(...this.exams);
     });
-
+  }
+  private refreshLectures(): void {
     this.lecturesDataServices.getLectures().subscribe(ls => {
 
       this.lectures = ls.map(lec => {
