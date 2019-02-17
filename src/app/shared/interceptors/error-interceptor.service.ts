@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 import { HttpStatusCode, Consts } from '../consts';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -20,13 +21,17 @@ export class ErrorInterceptor {
         HttpStatusCode.GATEWAY_TIMEOUT
     ];
 
-    constructor(private authenticationService: AuthService) { }
+    constructor(private authenticationService: AuthService, private router: Router) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(
             catchError((err: HttpErrorResponse) => {
                 if (this.networkErrors.includes(err.status)) {
                     return throwError({ message: 'Network Error', originalError: err, type: 'common', handled: true });
+                } else if (err.status === HttpStatusCode.UNAUTHORIZED) {
+                    this.authenticationService.logout().subscribe(
+                        () => this.router.navigateByUrl('/login')
+                      );
                 }
                 return throwError({originalError: err, handled: false});
             }));

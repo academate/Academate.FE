@@ -19,7 +19,10 @@ export class AcademyCalendarHomeComponent implements OnInit {
   constructor(
     private examsDataService: ExamsDataService,
     private lecturesDataServices: LectureDataService
-  ) { }
+  ) {
+    // Default initializations
+    this.calendarEvents = [];
+  }
 
   ngOnInit() {
     this.refreshDataSource();
@@ -31,26 +34,27 @@ export class AcademyCalendarHomeComponent implements OnInit {
       this.exams = ex.map(exam => {
         const _startDate = new Date(exam['startDate']);
         return {
-          text : exam['title'],
+          text: exam['title'],
           startDate: _startDate,
           endDate: getDateByStartDateAndDuration(_startDate, exam['duration'])
         } as CalendarEvent;
       });
 
-      this.calendarEvents = [...this.exams];
+      this.calendarEvents.push(...this.exams);
     });
 
     this.lecturesDataServices.getLectures().subscribe(ls => {
-      this.lectures = ls;
 
-      this.lectures = ls.map( lec => {
+      this.lectures = ls.map(lec => {
         const _startDate = new Date(lec['dateTime']);
         return {
-          text : lec['title'],
+          text: lec['title'],
           startDate: _startDate,
-          endDate: getDateByStartDateAndDuration(_startDate, lec['dateTime'])
+          endDate: getDateByStartDateAndDuration(_startDate, lec['duration'])
         } as CalendarEvent;
       });
+
+      this.calendarEvents.push(...this.lectures);
     });
   }
 
