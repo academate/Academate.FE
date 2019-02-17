@@ -1,5 +1,6 @@
-<div *ngIf='studentExams' class='flex-layout'>
+<div *ngIf='exams' class='flex-layout'>
   <div class='caldendar'>
-    <app-exam-calendar [examsData]='studentExams'></app-exam-calendar>
+    <app-calendar-view 
+    [calendarEvents]='exams'></app-calendar-view>
   </div>
 </div>
