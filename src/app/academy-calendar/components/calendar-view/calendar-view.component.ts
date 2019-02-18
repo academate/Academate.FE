@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CalendarEvent } from '../../models/calendar-event.model';
 
 @Component({
@@ -8,8 +8,14 @@ import { CalendarEvent } from '../../models/calendar-event.model';
 })
 export class CalendarViewComponent implements OnInit {
 
+  @Output() ShowExamsToggled: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() ShowLecturesToggled: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   @Input() calendarEvents: CalendarEvent[];
   currentDate: Date = new Date(2019, 1, 22);
+
+  showExamsState: boolean;
+  showLecturesState: boolean;
 
   editSettings: {
     allowAdding: false;
@@ -19,6 +25,8 @@ export class CalendarViewComponent implements OnInit {
   };
 
   constructor() {
+    this.showExamsState = true;
+    this.showLecturesState = true;
   }
 
   ngOnInit() {
@@ -29,6 +37,16 @@ export class CalendarViewComponent implements OnInit {
     if (!this.calendarEvents) {
       this.calendarEvents = [];
     }
+  }
+
+  showExamsToggled(): void {
+    this.showExamsState = !this.showExamsState;
+    this.ShowExamsToggled.emit(this.showExamsState);
+  }
+
+  showLecturesToggled(): void {
+    this.showLecturesState = !this.showLecturesState;
+    this.ShowLecturesToggled.emit(this.showLecturesState);
   }
 
 }

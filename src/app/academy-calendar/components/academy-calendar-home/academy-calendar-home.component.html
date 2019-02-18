@@ -1,6 +1,8 @@
 <div *ngIf='exams' class='flex-layout'>
   <div class='caldendar'>
     <app-calendar-view 
+    (ShowExamsToggled)='onShowExamsToggled($event)' 
+    (ShowLecturesToggled)='onShowLecturesToggled($event)'
     [calendarEvents]='calendarEvents'></app-calendar-view>
   </div>
 </div>

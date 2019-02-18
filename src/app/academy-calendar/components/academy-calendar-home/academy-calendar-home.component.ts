@@ -47,6 +47,7 @@ export class AcademyCalendarHomeComponent implements OnInit {
       this.calendarEvents.push(...this.exams);
     });
   }
+
   private refreshLectures(): void {
     this.lecturesDataServices.getLectures().subscribe(ls => {
 
@@ -61,6 +62,40 @@ export class AcademyCalendarHomeComponent implements OnInit {
 
       this.calendarEvents.push(...this.lectures);
     });
+  }
+
+  onShowExamsToggled(state: boolean) {
+    if (state === true) {
+      this.calendarEvents.push(...this.exams);
+    } else {
+      this.hideExams();
+    }
+  }
+
+  onShowLecturesToggled(state: boolean) {
+    if (state === true) {
+      this.calendarEvents.push(...this.lectures);
+    } else {
+      this.hideLectures();
+    }
+  }
+
+  private hideExams(): void {
+    const toRemove = this.exams;
+    const temp = this.calendarEvents.filter(function (e) {
+      return toRemove.indexOf(e) < 0;
+    });
+
+    this.calendarEvents = temp;
+  }
+
+  private hideLectures(): void {
+    const toRemove = this.lectures;
+    const temp = this.calendarEvents.filter(function (e) {
+      return toRemove.indexOf(e) < 0;
+    });
+
+    this.calendarEvents = temp;
   }
 
 }
