@@ -53,10 +53,19 @@ export class AcademyCalendarHomeComponent implements OnInit {
 
       this.lectures = ls.map(lec => {
         const _startDate = new Date(lec['dateTime']);
+        const _isRecurrening = lec['repeatable'] as Boolean;
+        let _recurranceDueDate = '';
+
+        if (lec['dueTo']) {
+          _recurranceDueDate = lec['dueTo'].split('-').join('').split(':').join('').split('.').join('');
+        }
+
+        const _reccuranceFreqExpression = _isRecurrening === true ? 'FREQ=WEEKLY;UNTIL=' + _recurranceDueDate : null;
         return {
           text: lec['title'],
           startDate: _startDate,
-          endDate: getDateByStartDateAndDuration(_startDate, lec['duration'])
+          endDate: getDateByStartDateAndDuration(_startDate, lec['duration']),
+          recurrenceRule: _reccuranceFreqExpression
         } as CalendarEvent;
       });
 
