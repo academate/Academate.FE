@@ -1,0 +1,27 @@
+<div class='course-item'>
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Course <span>{{ CourseItem.name }}</span>
+        </mat-panel-title>
+        <mat-panel-description>
+          <span>{{ CourseItem.description }}</span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class='course-item-expanded-details'>
+        <span>Qualification: {{ CourseItem.qualified | booleanToTrueFalse }}</span>
+        <span>Final Grade: {{ CourseItem.finalGrade }}</span>
+      </div>
+      <div class='course-item-links'>
+        <span>Course Exams</span>
+        <div *ngFor='let _exam of CourseItem.courseExams'>
+          <span style='margin: 6px;'>{{ _exam.title }}</span>
+          <span style='margin: 6px;'>{{ _exam.date | date:'dd/MM, HH:mm' }} </span>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

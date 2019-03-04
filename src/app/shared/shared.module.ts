@@ -5,12 +5,14 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule, MatInputModule } from '@angular/material';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { BooleanToTrueFalsePipe } from './pipes/boolean-to-true-false.pipe';
 
 @NgModule({
   declarations: [
     LoginComponent,
     LoaderComponent,
-    CalendarComponent
+    CalendarComponent,
+    BooleanToTrueFalsePipe
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     MatInputModule,
   ],
   exports: [
-    LoaderComponent
+    LoaderComponent,
+    BooleanToTrueFalsePipe
   ]
 })
 export class SharedModule { }

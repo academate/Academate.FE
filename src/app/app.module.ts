@@ -16,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
 import { SpaModule } from './spa/spa.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AcademyCalendarModule } from './academy-calendar/academy-calendar.module';
+import { MyCoursesModule } from './my-courses/my-courses.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AcademyCalendarModule } from './academy-calendar/academy-calendar.modul
 
     SpaModule,
     SharedModule,
-    AcademyCalendarModule
+    AcademyCalendarModule,
+    MyCoursesModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
