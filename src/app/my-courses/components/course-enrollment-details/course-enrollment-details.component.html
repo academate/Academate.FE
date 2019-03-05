@@ -1,0 +1,12 @@
+<div class='enrollment-details-card' *ngIf='Enrollment'>
+  <div class='header'>
+    <span>Details for : {{ Enrollment.title }} ({{ Enrollment.id }} / {{ Enrollment.courseId }})</span>
+  </div>
+
+  <div class='summary'>
+    <span>Status: {{ Enrollment.status }}</span>
+    <span>Qualification: {{ Enrollment.qualified | booleanToTrueFalse }}</span>
+    <span>Final Grade: {{ Enrollment.finalGrade }} </span>
+  </div>
+
+</div>

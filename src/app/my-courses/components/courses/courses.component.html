@@ -1,1 +1,14 @@
-<app-courses-list [Courses]='courses'></app-courses-list>
+<div>
+    <mat-form-field>
+        <mat-select placeholder="Semester(s)" [formControl]="semesterSelection" multiple>
+            <mat-option *ngFor="let semester of semesters" [value]="semester">{{ semester }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div class='wrapper'>
+    <app-courses-list class='card' [Courses]='courses' (ShowEnrollmentDetails)='onShowEnrollmentDetails($event)'>
+    </app-courses-list>
+    <app-course-enrollment-details *ngIf='enrollmentToShow' class='card' [Enrollment]='enrollmentToShow'>
+    </app-course-enrollment-details>
+</div>

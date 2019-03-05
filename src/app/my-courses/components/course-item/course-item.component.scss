@@ -1,6 +1,5 @@
 .course-item {
     margin: auto;
-    margin-top: 12px;
     margin-bottom: 12px;
 }
 
@@ -12,4 +11,17 @@
 
 .course-item-links {
     margin: 6px;
+}
+
+a {
+    color: #ffffff;
+}
+
+.course-actions-bar {
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+        cursor: pointer;
+    }
 }

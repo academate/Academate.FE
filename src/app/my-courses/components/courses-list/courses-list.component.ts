@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -9,11 +9,16 @@ import { FormControl } from '@angular/forms';
 export class CoursesListComponent implements OnInit {
 
   @Input() Courses: any[];
-  semesterSelection = new FormControl();
-  semesters: string[] = ['A (First Year)', 'B', 'C', 'D', 'E', 'F'];
+  @Output() ShowEnrollmentDetails: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onShowEnrollmentDetails(courseId: number): void {
+    console.log(' --> Expand enrollment details for ' + courseId);
+    this.ShowEnrollmentDetails.emit(courseId);
   }
 
 }

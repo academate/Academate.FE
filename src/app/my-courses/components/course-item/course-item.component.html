@@ -4,10 +4,10 @@
 
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Course <span>{{ CourseItem.name }}</span>
+          Course<span>&nbsp;{{ CourseItem.title }}</span>
         </mat-panel-title>
         <mat-panel-description>
-          <span>{{ CourseItem.description }}</span>
+          <span> -- description goes here</span>
         </mat-panel-description>
       </mat-expansion-panel-header>
 
@@ -21,6 +21,10 @@
           <span style='margin: 6px;'>{{ _exam.title }}</span>
           <span style='margin: 6px;'>{{ _exam.date | date:'dd/MM, HH:mm' }} </span>
         </div>
+      </div>
+
+      <div class='course-actions-bar'>
+        <a (click)='ShowEnrollmentDetailsClicked($event, CourseItem.courseId)'>View my enrollment</a>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

@@ -1,15 +1,7 @@
 <div *ngIf='Courses'>
   
-  <div>
-    <mat-form-field>
-      <mat-select placeholder="Semester(s)" [formControl]="semesterSelection" multiple>
-        <mat-option *ngFor="let semester of semesters" [value]="semester">{{ semester }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-
   <div *ngFor="let item of Courses">
-    <app-course-item [CourseItem]='item'>
+    <app-course-item [CourseItem]='item' (ShowEnrollmentDetails)='onShowEnrollmentDetails($event)' >
     </app-course-item>
   </div>
 

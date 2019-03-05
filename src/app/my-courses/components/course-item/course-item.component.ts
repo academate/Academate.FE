@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Course } from '../../models/course.model';
 
 @Component({
@@ -9,6 +9,8 @@ import { Course } from '../../models/course.model';
 export class CourseItemComponent implements OnInit {
 
   @Input() CourseItem: Course;
+  @Output() ShowEnrollmentDetails: EventEmitter<any> = new EventEmitter<any>();
+
   panelOpenState = false;
 
   constructor() { }
@@ -16,4 +18,7 @@ export class CourseItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  ShowEnrollmentDetailsClicked(event: any, courseId: number): void {
+    this.ShowEnrollmentDetails.emit(courseId);
+  }
 }

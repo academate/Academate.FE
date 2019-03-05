@@ -8,9 +8,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { SharedModule } from '../shared/shared.module';
 import { MatSelectModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CourseEnrollmentDetailsComponent } from './components/course-enrollment-details/course-enrollment-details.component';
 
 @NgModule({
-  declarations: [CourseItemComponent, CoursesListComponent, CoursesComponent],
+  declarations: [CourseItemComponent, CoursesListComponent, CoursesComponent, CourseEnrollmentDetailsComponent],
   imports: [
     CommonModule,
     HttpClientModule,
